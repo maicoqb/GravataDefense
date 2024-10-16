@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
@@ -10,18 +11,28 @@ public class Monster : MonoBehaviour
     [Tooltip("Movement speed for monster.")]
     public float speed = 5f;
 
-    public int life = 3;
+    public Image healthBarFill;
+    public float maxLife = 3;
+    private float life;
+    private Vector3 healthBarOffset;
+    public Transform healthBarBackground;
 
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        life = maxLife;
+        healthBarOffset = healthBarBackground.position - transform.position;
     }
 
     void Update()
     {
         FollowPlayer();
+
+        healthBarBackground.position = transform.position + healthBarOffset;
+        healthBarBackground.rotation = Quaternion.identity;
     }
 
     void FollowPlayer()
@@ -36,15 +47,23 @@ public class Monster : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Damage();
+            TakeDamage();
         }
     }
 
-    void Damage()
+    void TakeDamage()
     {
         life = life - 1;
 
-        if (life <= 0) Destroy(gameObject);
+        float healthPercent = life / maxLife;
+        healthBarFill.transform.localScale = new Vector3(healthPercent, healthBarFill.transform.localScale.y, healthBarFill.transform.localScale.z);
+
+        if (life <= 0) Die();
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 
 }
