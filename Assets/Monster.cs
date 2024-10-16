@@ -19,6 +19,11 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
+        FollowPlayer();
+    }
+
+    void FollowPlayer()
+    {
         if (player == null) return;
 
         Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;

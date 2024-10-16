@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
 
     private bool isJumping = false;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,22 +19,25 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Move();
+        Jump();
+    }
+
+    void Move()
+    {
         float movement = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(movement * speed, rb.velocity.y);
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
     }
 
     void Jump()
     {
         if (isJumping) return;
 
-        isJumping = true;
-
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        if (Input.GetButtonDown("Jump"))
+        {
+            isJumping = true;
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
