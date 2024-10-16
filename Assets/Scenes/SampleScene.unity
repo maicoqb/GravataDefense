@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 1167193304}
   - component: {fileID: 1167193303}
   - component: {fileID: 1167193302}
+  - component: {fileID: 1167193305}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -446,6 +447,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1167193305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167193300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78364f41443262a4da114f6f336a0dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1233224053
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,9 +875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1905911518}
   speed: 3
-  healthBarFill: {fileID: 1473999709}
-  maxLife: 3
-  healthBarBackground: {fileID: 1297642001}
+  life: 3
 --- !u!58 &2130185096
 CircleCollider2D:
   m_ObjectHideFlags: 0
