@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    [Tooltip("Movement speed for player.")]
     public float speed = 5f;
+    [Tooltip("Jump force for player.")]
     public float jumpForce = 10f;
 
     private Rigidbody2D rb;
