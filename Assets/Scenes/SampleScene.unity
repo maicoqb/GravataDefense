@@ -541,6 +541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1905911518}
   speed: 3
+  life: 3
 --- !u!58 &2130185096
 CircleCollider2D:
   m_ObjectHideFlags: 0
